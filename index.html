@@ -236,56 +236,87 @@
     }
   </style>
 </head>
-
 <body>
   <header>
     <nav>
       <h1>Code With Gamerz</h1>
       <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#notes">Notes</a></li>
-        <li><a href="#about">About</a></li>
+        <li><a href="#home" onclick="showSection('home')">Home</a></li>
+        <li><a href="#projects" onclick="showSection('projects')">Projects</a></li>
+        <li><a href="#notes" onclick="showSection('notes')">Notes</a></li>
+        <li><a href="#about" onclick="showSection('about')">About</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
   </header>
 
-  <section id="home" class="hero">
+  <section id="home" class="hero section">
     <h1>Welcome to <span>Code With Gamerz</span></h1>
     <p>Learn Python | Download Projects | Level Up</p>
-    <a href="#projects" class="btn">Explore Projects</a>
+    <a href="#projects" class="btn" onclick="showSection('projects')">Explore Projects</a>
   </section>
 
-  <section id="projects" class="content-section">
-    <h2>Python Projects</h2>
-    <div class="cards">
-      <div class="card">
-        <h3>Calculator App</h3>
-        <p>A simple Tkinter calculator.</p>
-        <div style="margin-top: 20px;">
-          <a href="calculator-code.html" class="btn">View Source Code</a>
-        </div>
-      </div>
+  <section id="projects" class="content-section section" style="display: none;">
+  <h2 style="text-align: left; margin-left: 10px;">Python Projects</h2>
 
-      <div class="card">
-        <h3>Python Installer GUI</h3>
-        <p>A Python installer GUI made using Tkinter for learning.</p>
-        <div style="margin-top: 20px;">
-          <a href="python_installer.html" class="btn">View Source Code</a>
-        </div>
-      </div>
-    </div>
-  </section>
+  <div style="margin-bottom: 60px;">
+    <h3 style="color: #f0f; font-size: 1.8rem;">Calculator App</h3>
+    <p>This is a lightweight, beginner-friendly Python calculator  that can perform basic arithmetic operations such as addition, subtraction, multiplication, division, square root and finding percentage. The script takes user input from the console, processes it using conditional statements or functions, and displays the result.
+<div>🔹 Features:
+<ul>
+  <li>Interactive command-line interface</li>
+  <li>Handles basic math operations</li>
+  <li>Error handling for division by zero and invalid input</li>
+  <li>Clean and easy-to-read code</li>
+</ul>
+</div>
 
-  <section id="notes" class="content-section">
+🧠 Perfect for beginners who are learning Python and want to understand input handling, conditionals, and basic arithmetic logic.
+
+</p>
+    <img src="images/calculator-preview.png" alt="Calculator Preview" style="width: 100%; max-width: 400px; border-radius: 10px; margin: 20px 0;">
+    <p>This app supports basic operations like addition, subtraction, multiplication, and division. It is designed for beginners to understand GUI programming using Python. You can copy the source code by clicking the button given below</p>
+    <a href="calculator-code.html" class="btn">View Source Code</a>
+  </div>
+
+  <div style="margin-bottom: 60px;">
+    <h3 style="color: #f0f; font-size: 1.8rem;">Python Installer GUI</h3>
+    <p>This project is a creative Python-based graphical installer built using the Tkinter library. It mimics the behavior and design of a real software installation process—just like installing Python on your system.
+<div>
+  🔧 Key Features:
+<ul>
+  <li>Multi-Window Interface: Seamless transition between different GUI windows (Welcome → Installing → Completed).</li>
+  <li>Progress Bar Animation: Realistic loading experience using an animated progress bar.</li>
+  <li>Minimalist Design: Clean, modern layout with labels and buttons styled to match actual installer UIs.</li>
+  <li>Fully Functional Buttons: Interactive buttons for navigation like "Install" and "Exit", with event handling.</li>
+  <li>Perfect for Practice or Showcase: Great for GUI practice or as a fun portfolio project.</li>
+</ul>
+</div>
+<div>
+  🎯 Ideal For:
+<ul>
+  <li>Beginners learning GUI development with Tkinter</li>
+  <li>Coders building portfolio-ready projects</li>
+</ul>
+</div>
+
+
+Demonstrating event-driven programming in Python</p>
+    <img src="images/python-preview.png" alt="Installer Preview" style="width: 100%; max-width: 400px; border-radius: 10px; margin: 20px 0;">
+    <p>It is for understanding the concept of gui only and for learning how a gui works. It is not an original python installer.
+      You can copy the source code by clicking the button under this.
+    </p>
+    <a href="python_installer.html" class="btn">View Source Code</a>
+  </div>
+</section>
+
+
+  <section id="notes" class="content-section section" style="display: none;">
     <h2>Course Notes</h2>
-
     <div style="text-align: center; margin-bottom: 20px;">
       <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" alt="Python Logo"
         style="height: 100px;" />
     </div>
-
     <div style="text-align: center;">
       <a href="https://drive.google.com/file/d/1IgBKJr4gxxbsXcnMhg1GTpAdk8iB02nV/view?usp=sharing" class="btn">
         Python Basics Notes (PDF)
@@ -293,7 +324,7 @@
     </div>
   </section>
 
-  <section id="about" class="content-section">
+  <section id="about" class="content-section section" style="display: none;">
     <h2>About</h2>
     <p>Hey! I'm a young Python and robotics enthusiast. On Code With Gamerz, I share projects, tutorials, and notes to
       help beginners learn in a fun and exciting way.</p>
@@ -306,6 +337,13 @@
       <a href="https://github.com/yourusername" target="_blank">GitHub</a>
     </div>
   </footer>
-</body>
 
-</html>
+  <script>
+    function showSection(id) {
+      const sections = document.querySelectorAll('.section');
+      sections.forEach(section => section.style.display = 'none');
+      document.getElementById(id).style.display = 'block';
+      window.scrollTo(0, 0);
+    }
+  </script>
+</body>

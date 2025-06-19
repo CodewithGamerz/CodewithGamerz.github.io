@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Code With Gamerz</title>
-  <link rel="icon" href="youtube logo.png" type="image/png" />
+  <link rel="icon" href="youtube-logo.png" type="image/png" />
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap');
 
@@ -13,6 +13,10 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
@@ -43,10 +47,12 @@
       justify-content: space-between;
       align-items: center;
       border-bottom: 2px solid #0ff;
+      flex-wrap: wrap;
     }
 
-    .logo {
-      height: 50px;
+    nav h1 {
+      color: #0ff;
+      font-size: 1.8rem;
     }
 
     nav ul {
@@ -98,9 +104,8 @@
       cursor: pointer;
       text-decoration: none;
       box-shadow: 0 0 10px #0ff;
-      /* simple cyan glow */
-
       transition: 0.4s;
+      display: inline-block;
     }
 
     .btn:hover {
@@ -192,13 +197,50 @@
       color: #0ff;
       text-decoration: none;
     }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px;
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 15px;
+        margin-top: 15px;
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      .btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+      }
+
+      .cards {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .card {
+        width: 90%;
+      }
+    }
   </style>
 </head>
 
 <body>
   <header>
     <nav>
-      <h1 style="color: #0ff; font-size: 1.8rem;">Code With Gamerz</h1>
+      <h1>Code With Gamerz</h1>
       <ul>
         <li><a href="#home">Home</a></li>
         <li><a href="#projects">Projects</a></li>
@@ -208,7 +250,6 @@
       </ul>
     </nav>
   </header>
-
 
   <section id="home" class="hero">
     <h1>Welcome to <span>Code With Gamerz</span></h1>
@@ -227,35 +268,26 @@
         </div>
       </div>
 
-     <div class="card">
+      <div class="card">
         <h3>Python Installer GUI</h3>
-        <p>A python installer gui made by using tkinter for learning</p>
+        <p>A Python installer GUI made using Tkinter for learning.</p>
         <div style="margin-top: 20px;">
-          <a href="python_installer.html"  class="btn">View Source Code</a>
+          <a href="python_installer.html" class="btn">View Source Code</a>
         </div>
+      </div>
     </div>
   </section>
+
   <section id="notes" class="content-section">
     <h2>Course Notes</h2>
 
-    <!-- Big Python Logo -->
     <div style="text-align: center; margin-bottom: 20px;">
       <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" alt="Python Logo"
         style="height: 100px;" />
     </div>
 
-    <!-- Glowing Button for Notes -->
     <div style="text-align: center;">
-      <a href="https://drive.google.com/file/d/1IgBKJr4gxxbsXcnMhg1GTpAdk8iB02nV/view?usp=sharing" style="display: inline-block;
-              padding: 12px 30px;
-              background: linear-gradient(90deg, #0ff, #f0f);
-              color: #000;
-              font-weight: bold;
-              font-size: 1.1rem;
-              border-radius: 6px;
-              text-decoration: none;
-              box-shadow: 0 0 15px #0ff;
-              transition: 0.3s;">
+      <a href="https://drive.google.com/file/d/1IgBKJr4gxxbsXcnMhg1GTpAdk8iB02nV/view?usp=sharing" class="btn">
         Python Basics Notes (PDF)
       </a>
     </div>
@@ -264,19 +296,14 @@
   <section id="about" class="content-section">
     <h2>About</h2>
     <p>Hey! I'm a young Python and robotics enthusiast. On Code With Gamerz, I share projects, tutorials, and notes to
-      help beginners learn in a fun and exciting way.
-    
-    </p>
+      help beginners learn in a fun and exciting way.</p>
   </section>
-
-
-
 
   <footer>
     <p>&copy; 2025 Code With Gamerz. All rights reserved.</p>
     <div class="socials">
-      <a href="#">YouTube</a>
-      <a href="#">GitHub</a>
+      <a href="https://youtube.com/@yourchannel" target="_blank">YouTube</a>
+      <a href="https://github.com/yourusername" target="_blank">GitHub</a>
     </div>
   </footer>
 </body>

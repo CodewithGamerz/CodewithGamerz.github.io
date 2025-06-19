@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Calculator Source Code</title>
+  <style>
+    body {
+      background: #0a0a0a;
+      color: #0ff;
+      font-family: monospace;
+      padding: 30px;
+    }
+    h1 {
+      text-align: center;
+      color: #f0f;
+      margin-bottom: 30px;
+    }
+    pre {
+      background: #111;
+      padding: 20px;
+      border: 1px solid #0ff;
+      border-radius: 10px;
+      overflow-x: auto;
+      white-space: pre-wrap;
+    }
+    button {
+      display: block;
+      margin: 20px auto;
+      padding: 12px 25px;
+      background: #0ff;
+      color: #000;
+      font-weight: bold;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Python Calculator Source Code</h1>
+
+  <pre id="code">
+from tkinter import *
+from tkinter import messagebox as tsmg
+import math
+
+# this is to make a gui window
+root = Tk()
+
+# this is the default size of the gui window
+root.geometry("400x450")
+
+# this is the title of the gui
+root.title("Calcator by Kush Kumar")
+
+# this is to add the icon of the gui
+root.wm_iconbitmap('keys.ico')
+
+# this did not allow the user to change the default size of the gui window
+root.resizable(False,False)
+
+# this is to change the color of the background of the gui
+root.configure(background="light blue")
+
+# this will store the value of the screen for the history
+history_list = []
+
+
+# this is to make a function that will show the history of the calculator
+def history(event):
+ # this is to get the screen value
+    global screen_value
+
+    # this is to get the text that is entered by the user
+    text = event.widget.cget("text")
+    if text == "<?>":
+        screen_value.get()
+        tsmg.showinfo("HISTORY -- ",history_list)
+# this is to make the function through which all the keys will work
+def click(event):
+    
+    # this is to get the screen value
+    global screen_value
+
+    # this is to get the text that is entered by the user
+    text = event.widget.cget("text")
+
+    # this is to print the button which is pressed by the user
+    print(text)
+
+    # these are the conditions through which all the buttons work
+    if text == "=":
+        try:
+            if screen_value.get().isdigit():
+                value = int(screen_value.get())
+            else:
+                # this eval function is used to calculate the basic math functions such as +,-,*,/
+                value = eval(screen_value.get().replace("%","/100"))
+            screen_value.set(value)
+        except:
+            screen_value.set("Error")
+        screen.update()
+        history_list.append(text)
+    
+    # this is the condition that will check that the button (AC) is pressed or not if pressed then it will clear the screen
+    elif text == "AC":
+
+        # this is to set the screen value null
+        screen_value.set("")
+
+        # this is to update the screen
+        screen.update()
+        history_list.append(text)
+
+    # this is the condition that will check that the button (<--) is pressed or not if pressed then it will delete the text one by one
+    elif text == "<--":
+
+        # this is to store the screen value in the variable current
+        current = screen_value.get()
+        screen_value.set(current[:-1])
+        screen.update()
+        history_list.append(text)
+
+    # this is the condition that will check that the button (√) is pressed or not if pressed then it will calculate the square root of it  
+    elif text == "√":
+        try:
+            # this is to set the value of screen 
+            screen_value.set(screen_value.get() + "√")
+            # this is to replace this √ with the value of square root which is **0.5
+            square_rootvalue = eval(screen_value.get().replace("√", "**0.5"))
+            # this will set the screen value 
+            screen_value.set(square_rootvalue)
+        except:
+            # this will check that if the user has entered the wrong value or try to do something which is not correct then it will display error
+            screen_value.set("Error")
+        screen.update()
+        history_list.append(text)
+    else:
+        screen_value.set(screen_value.get() + str(text))
+        screen.update()
+        history_list.append(text)
+
+# this is to make a variable for the entry widget which will take the string value only
+screen_value = StringVar()
+# this will set the screen value
+screen_value.set("")
+# this will make a entry widget in which we can entry the values in our calculator
+screen = Entry(root, textvariable=screen_value,font="Times 32 ")
+screen.pack(fill=X,padx=5,pady=5)
+
+# these are all the frames in which all the buttons are packed
+frame = Frame(root,bg="light blue")
+frame.pack()
+frame1 = Frame(root,bg="light blue")
+frame1.pack()
+frame2 = Frame(root,bg="light blue")
+frame2.pack()
+frame3 = Frame(root,bg="light blue")
+frame3.pack()
+frame4 = Frame(root,bg="light blue")
+frame4.pack()
+
+
+# these are all the buttons that we have made for our calculator
+
+his = Button(frame,text="<?>",relief=GROOVE,font="Times 15 bold",padx=5,activebackground="light green",command=history)
+his.pack(side=LEFT,padx=1,pady=5)
+his.bind("<Button-1>",history)
+b = Button(frame,text="AC",relief=GROOVE,font="Times 22 bold",padx=5,activebackground="light green")
+b.pack(side=LEFT,padx=9,pady=5)
+b.bind("<Button-1>",click)
+b = Button(frame,text="<--",relief=GROOVE,font="Arial 22 bold",padx=5)
+b.pack(side=LEFT,padx=9,pady=5)
+b.bind("<Button-1>",click)
+b = Button(frame,text="√",relief=GROOVE,font="Times 22 bold",padx=5)
+b.pack(side=LEFT,padx=9,pady=5)
+b.bind("<Button-1>",click)
+b = Button(frame,text="/",relief=GROOVE,font="Times 22 bold",padx=9)
+b.pack(side=LEFT,padx=9,pady=5)
+b.bind("<Button-1>",click)
+b=Button(frame1,text="*",relief=GROOVE,font="Times 22 bold",padx=9)
+b.pack(side=RIGHT,padx=12,pady=5)
+b.bind("<Button-1>",click)
+b=Button(frame2,text="-",relief=GROOVE,font="Times 25 bold",padx=10,pady=1)
+b.pack(side=RIGHT,padx=12,pady=5)
+b.bind("<Button-1>",click)
+b=Button(frame3,text="+",relief=GROOVE,font="Times 22 bold",padx=9)
+b.pack(side=RIGHT,padx=12,pady=5)
+b.bind("<Button-1>",click)
+
+for i in range(1,4):
+    b=Button(frame1,text=i,relief=GROOVE,font="Times 22 bold",padx=9)
+    b.pack(side=LEFT,padx=12,pady=5)
+    b.bind("<Button-1>",click)
+    i+=1
+for i in range(4,7):
+    b=Button(frame2,text=i,relief=GROOVE,font="Times 22 bold",padx=9)
+    b.pack(side=LEFT,padx=12,pady=5)
+    b.bind("<Button-1>",click)
+    i+=1
+for i in range(7,10):
+    b=Button(frame3,text=i,relief=GROOVE,font="Times 22 bold",padx=9)
+    b.pack(side=LEFT,padx=12,pady=5)
+    b.bind("<Button-1>",click)
+    i+=1
+    
+b = Button(frame4,text="%",relief=GROOVE,font="Times 22 bold",padx=9)
+b.pack(side=LEFT,padx=12,pady=5)
+b.bind("<Button-1>",click)
+b = Button(frame4,text="0",relief=GROOVE,font="Times 22 bold",padx=9)
+b.pack(side=LEFT,padx=12,pady=5)
+b.bind("<Button-1>",click)
+b = Button(frame4,text=".",relief=GROOVE,font="Times 22 bold",padx=9)
+b.pack(side=LEFT,padx=12,pady=5)
+b.bind("<Button-1>",click)
+b = Button(frame4,text="=",relief=GROOVE,font="Times 22 bold",padx=9,activebackground="yellow")
+b.pack(side=LEFT,padx=12,pady=5)
+b.bind("<Button-1>",click)
+
+root.mainloop()
+  </pre>
+
+  <button onclick="copyCode()">Copy Code</button>
+
+  <script>
+    function copyCode() {
+      const text = document.getElementById("code").innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        alert("Code copied to clipboard!");
+      });
+    }
+  </script>
+</body>
+</html>

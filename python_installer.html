@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Calculator Source Code</title>
+  <style>
+    body {
+      background: #0a0a0a;
+      color: #0ff;
+      font-family: monospace;
+      padding: 30px;
+    }
+    h1 {
+      text-align: center;
+      color: #f0f;
+      margin-bottom: 30px;
+    }
+    pre {
+      background: #111;
+      padding: 20px;
+      border: 1px solid #0ff;
+      border-radius: 10px;
+      overflow-x: auto;
+      white-space: pre-wrap;
+    }
+    button {
+      display: block;
+      margin: 20px auto;
+      padding: 12px 25px;
+      background: #0ff;
+      color: #000;
+      font-weight: bold;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Python Installer GUI Source Code</h1>
+
+  <pre id="code">
+from tkinter import *
+from PIL import Image,ImageTk
+from tkinter import ttk
+import time
+
+def open_third_gui():
+        
+    third = Tk()
+    third.geometry("700x400")
+    third.configure(background="white")
+    third.title("Python 3.13.4 (64-bit) Setup   ------>🛈 “Simulated installer UI for explanation”")
+    third.iconbitmap('h.ico')
+
+    frame1 = Frame(third)
+    frame1.pack(side=LEFT,fill=Y)
+
+    image = Image.open("py.png")
+    resized_image = image.resize((170,400))
+    photo = ImageTk.PhotoImage(resized_image)
+    Label(frame1,image=photo).pack()
+
+    heading = Label(third,text="Setup was successful",font="Times 25 bold",background="white")
+    heading.pack(anchor=W,pady=12)
+
+    line1 = Label(third,text="New to Python? Start with the online tutorial and",font="Times 15",background="white")
+    line1.pack(anchor="w")
+    line2 = Label(third,text="documentation. At your terminal, type \"py\" to launch Python," ,font="Times 15",background="white")
+    line2.pack(anchor="w")
+    line3 = Label(third,text="or search for python in your start menu.",font="Times 15",background="white")
+    line3.pack(anchor="w")
+    line4 = Label(third,text="See what's new in this release, or find more info about using",font="Times 15",background="white")
+    line4.pack(anchor="w",pady=(20,0))
+    line5 = Label(third,text="Python on Windows",font="Times 15",background="white")
+    line5.pack(anchor="w")
+
+    frame2 = Frame(third,bg="white")
+    frame2.pack(side=BOTTOM,anchor="se")
+    Button(frame2,text="Close",font="Times 15 ",width=8,relief=GROOVE,command=quit).pack(side=RIGHT, anchor=E,padx=8,pady=8)
+
+
+    third.mainloop()
+
+def second_gui():
+    second = Tk()
+    second.geometry("700x400")
+    second.configure(background="white")
+    second.title("Python 3.13.4 (64-bit) Setup   ----->🛈 “Simulated installer UI for explanation”")
+    second.iconbitmap('h.ico')
+
+    frame1 = Frame(second)
+    frame1.pack(side=LEFT,fill=Y)
+
+    image = Image.open("py.png")
+    resized_image = image.resize((170,400))
+    photo = ImageTk.PhotoImage(resized_image)
+    Label(frame1,image=photo).pack()
+
+    heading = Label(second,text="Setup Progress",font="Times 25 bold",background="white")
+    heading.pack(anchor=W,pady=12)
+
+    line1= Label(second,text="Installing:",font="Times 15 ",background="white")
+    line1.pack(anchor=NW,pady=22)
+
+    line2= Label(second,text="Python 3.13.4 Development Libraries (64-bit)",font="Times 15 ",background="white")
+    line2.pack(anchor=NW)
+
+    frame2 = Frame(second,bg="white")
+    frame2.pack(side=BOTTOM,anchor="se")
+    Button(frame2,text="Cancel",font="Times 15 ",width=8,relief=GROOVE).pack(side=RIGHT, anchor=E,padx=8,pady=8)
+
+    
+
+    def start_progress():
+        
+        # Simulate a task that takes time to complete
+        for i in range(101):
+        # Simulate some work
+            time.sleep(0.09)  
+            progress['value'] = i
+            # Update the GUI
+            second.update_idletasks()  
+        second.destroy()
+        open_third_gui()
+    second.after(100,start_progress)
+
+    # Create a progressbar widget
+    progress = ttk.Progressbar(second, orient="horizontal", length=500, mode="determinate")
+    progress.pack(pady=20)
+
+    second.mainloop()
+
+
+root = Tk()
+root.geometry("700x400")
+root.configure(background="white")
+root.title("Python 3.13.4 (64-bit) Setup  ----->🛈 “Simulated installer UI for explanation”")
+root.iconbitmap('h.ico')
+
+frame1 = Frame(root)
+frame1.pack(side=LEFT,fill=Y)
+
+image = Image.open("py.png")
+resized_image = image.resize((170,400))
+photo = ImageTk.PhotoImage(resized_image)
+Label(frame1,image=photo).pack()
+
+heading = Label(text="Install Python 3.13.4 (64-bit)",font="Times 24 bold",bg="white")
+heading.pack(pady=12,anchor=W)
+line1 = Label(text="Select Install Now to install Python with default setting,or choose",font="Times 12",bg="white")
+line1.pack(anchor=W)
+line2 = Label(text="Customize to enable or disable features.",font="Times 12",bg="white")
+line2.pack(anchor=W)
+line3 = Button(text="→Install Now",font="Times 16",bg="white",fg="blue",bd=0,activebackground="white",command=lambda:[root.destroy(),second_gui()])
+line3.pack(anchor=W,padx=8,pady=15)
+line4 = Label(text="C:\\Users\\iiti\\AppData\\LocalPrograms\\Python\\Python313",font="Times 8",bg="white",fg="blue")
+line4.pack(anchor=W,pady=5)
+line5 = Label(text="Includes,IDLE,pip and documentation",font="Times 10",bg="white",fg="blue")
+line5.pack(anchor=W)
+line6 = Label(text="Creates shortcuts and assciation",font="Times 10",bg="white",fg="blue",)
+line6.pack(anchor=W)
+line7 = Label(text="→Customize installation",font="Times 16",bg="white",fg="blue")
+line7.pack(anchor=W,padx=8,pady=15)
+line8 = Label(text="choose installation location and features",font="Times 8",bg="white",fg="blue")
+line8.pack(anchor=W,pady=5)
+
+frame2 = Frame(root,bg="white")
+frame2.pack(anchor=W,side=BOTTOM)
+box = Checkbutton(frame2,bg="white")
+box.pack(side=LEFT)
+line9 = Label(frame2,text="Use admin privileges when installing py.exe",font="Times 10",bg="white")
+line9.pack(side=LEFT)
+
+frame3 = Frame(root,bg="white")
+frame3.pack(anchor=W,side=BOTTOM)
+box = Checkbutton(frame3,bg="white")
+box.pack(side=LEFT)
+line9 = Label(frame3,text="Add python.exe to PATH",font="Times 10",bg="white")
+line9.pack(side=LEFT)
+frame4 = Frame(root,bg="white")
+frame4.pack(anchor=E,side=BOTTOM)
+Button(frame2,text="Cancel",font="Times 15 ",width=8).pack(side=RIGHT, anchor=E,padx=100)
+root.mainloop()
+
+
+  </pre>
+
+  <button onclick="copyCode()">Copy Code</button>
+
+  <script>
+    function copyCode() {
+      const text = document.getElementById("code").innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        alert("Code copied to clipboard!");
+      });
+    }
+  </script>
+</body>
+</html>

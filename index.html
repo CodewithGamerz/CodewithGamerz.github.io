@@ -204,13 +204,43 @@
   margin-bottom: 30px;
 }
 
+.glow-ring {
+  position: relative;
+  display: inline-block;
+  width: 180px;
+  height: 180px;
+}
+
+.glow-ring::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  box-shadow: 0 0 15px #0ff, 0 0 30px #0ff;
+  animation: pulse 2s infinite ease-in-out;
+  z-index: 0;
+}
+
 .channel-logo {
   width: 180px;
   height: 180px;
   object-fit: cover;
   border-radius: 50%;
-  border: 3px solid #0ff;
-  box-shadow: 0 0 15px #0ff;
+  position: relative;
+  z-index: 1;
+}
+
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+  }
+  50% {
+    box-shadow: 0 0 25px #0ff, 0 0 45px #f0f;
+  }
 }
 
 
@@ -332,6 +362,28 @@ Demonstrating event-driven programming in Python</p>
       You can copy the source code by clicking the button under this.
     </p>
     <a href="python_installer.html" class="btn">View Source Code</a>
+  </div>
+  
+  <div style="margin-bottom: 60px;">
+    <h3 style="color: #f0f; font-size: 1.8rem;">Notepad made in Python</h3>
+    <p>Introducing my custom-built Notepad application, developed using Python and Tkinter! This lightweight, beginner-friendly text editor lets you write, edit, and save text files with ease — just like the default Notepad app in Windows, but created from scratch using Python.
+<div>🔹 Features include:
+<ul>
+  <li>Simple and clean GUI using Tkinter</li>
+  <li>Open and Save .txt files</li>
+  <li>Edit text in real-time</li>
+  <li>Basic text formatting support</li>
+  <li>Fully functional menu bar (File, Edit, etc.)</li>
+</ul>
+</div>
+
+🧠 Perfect for beginners who are learning Python and want to understand input handling, conditionals, and how the file is saved or opened.
+
+</p>
+   <img src="notepad.png" alt="Calculator Preview" style="width: 100%; max-width: 400px; border-radius: 10px; margin: 20px 0;">
+
+    <p>This project is a great example of how Python can be used to create real desktop applications with graphical user interfaces. It’s perfect for beginners looking to understand event-driven programming and GUI design in Python. You can copy the source code by clicking the button given below</p>
+    <a href="note.html" class="btn">View Source Code</a>
   </div>
 </section>
 

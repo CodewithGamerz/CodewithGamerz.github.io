@@ -149,19 +149,20 @@
     }
     /* Style only the subscribe button in navbar */
 .subscribe-btn {
-  position: absolute;
-  top: 40px;
-  right: 20px;
+  position: fixed;
+  top: 40px; /* adjust for desired gap from top */
+  right: 40px; /* match header padding */
   background: red;
   color: white;
   box-shadow: 0 0 10px red;
   animation: none;
-  z-index: 1000;
-  padding: 8px 15px;
-  font-size: 0.9rem;
+  z-index: 9999;
+  padding: 10px 16px;
+  font-size: 0.95rem;
   border-radius: 6px;
   text-decoration: none;
   font-weight: bold;
+  transition: transform 0.2s ease-in-out;
 }
 
 .subscribe-btn:hover {

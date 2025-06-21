@@ -210,19 +210,20 @@
       text-align: center;
     }
 
-    .cards {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 30px;
-      justify-content: center;
-    }
+   .cards {
+  display: block;
+}
+
 
     .card {
+       margin-bottom: 30px; /* adds spacing between cards */
+        margin-left: auto;
+        margin-right: auto;
       background: #1a1a1a;
       border: 1px solid #0ff;
-      padding: 20px;
+      padding: 40px;
       border-radius: 10px;
-      width: 280px;
+      width: 1280px;
       box-shadow: 0 0 15px rgba(0, 255, 255, 0.1);
       transition: 0.3s;
     }
@@ -232,7 +233,7 @@
     }
 
     .card a {
-      color: #0ff;
+      color: rgb(15, 15, 15);
       text-decoration: none;
     }
 
@@ -363,6 +364,41 @@
         width: 90%;
       }
     }
+ .typewriter {
+  overflow: hidden;
+  border-right: 3px solid #0ff;
+  white-space: nowrap;
+  margin: 0 auto;
+  letter-spacing: 2px;
+  width: 0;
+  animation: typing 8s steps(30, end) infinite, blink 1s step-end infinite;
+}
+
+@keyframes typing {
+  0% {
+    width: 0;
+  }
+  30% {
+    width: 100%; /* Finish typing */
+  }
+  78% {
+    width: 100%; /* Pause holding full text */
+  }
+  100% {
+    width: 0%; /* Slowly delete */
+  }
+}
+
+@keyframes blink {
+  0%, 100% {
+    border-color: transparent;
+  }
+  50% {
+    border-color: #0ff;
+  }
+}
+
+
   </style>
 </head>
 <body>
@@ -394,14 +430,16 @@
 </div>
 
 
-    <h1>Welcome to <span>Code With Gamerz</span></h1>
+    <h1 class="typewriter">Welcome to <span>Code With Gamerz</span></h1>
+
     <p>Learn Python | Download Projects | Level Up</p>
     <a href="#projects" class="btn" onclick="showSection('projects')">Explore Projects</a>
   </section>
 
   <section id="projects" class="content-section section" style="display: none;">
   <h2 style="text-align: left; margin-left: 10px;">Python Projects</h2>
-
+<div class ="cards">
+  <div class = "card">
   <div style="margin-bottom: 60px;">
     <h3 style="color: #f0f; font-size: 1.8rem;">Calculator App</h3>
     <p>This is a lightweight, beginner-friendly Python calculator  that can perform basic arithmetic operations such as addition, subtraction, multiplication, division, square root and finding percentage. The script takes user input from the console, processes it using conditional statements or functions, and displays the result.
@@ -422,7 +460,8 @@
     <p>This app supports basic operations like addition, subtraction, multiplication, and division. It is designed for beginners to understand GUI programming using Python. You can copy the source code by clicking the button given below</p>
     <a href="calculator-code.html" class="btn project-btn">View Source Code</a>
   </div>
-
+  </div>
+<div class = "card">
   <div style="margin-bottom: 60px;">
     <h3 style="color: #f0f; font-size: 1.8rem;">Python Installer GUI</h3>
     <p>This project is a creative Python-based graphical installer built using the Tkinter library. It mimics the behavior and design of a real software installation process—just like installing Python on your system.
@@ -453,7 +492,8 @@ Demonstrating event-driven programming in Python</p>
     </p>
     <a href="python_installer.html" class="btn project-btn">View Source Code</a>
   </div>
-  
+</div>
+<div class = "card">
   <div style="margin-bottom: 60px;">
     <h3 style="color: #f0f; font-size: 1.8rem;">Notepad made in Python</h3>
     <p>Introducing my custom-built Notepad application, developed using Python and Tkinter! This lightweight, beginner-friendly text editor lets you write, edit, and save text files with ease — just like the default Notepad app in Windows, but created from scratch using Python.
@@ -475,7 +515,10 @@ Demonstrating event-driven programming in Python</p>
     <p>This project is a great example of how Python can be used to create real desktop applications with graphical user interfaces. It’s perfect for beginners looking to understand event-driven programming and GUI design in Python. You can copy the source code by clicking the button given below</p>
     <a href="note.html" class="btn project-btn">View Source Code</a>
   </div>
+</div>
+</div>
 </section>
+
 
 
   <section id="notes" class="content-section section" style="display: none;">
@@ -500,8 +543,8 @@ Demonstrating event-driven programming in Python</p>
   <footer>
     <p>&copy; 2025 Code With Gamerz. All rights reserved.</p>
     <div class="socials">
-      <a href="https://youtube.com/@yourchannel" target="_blank">YouTube</a>
-      <a href="https://github.com/yourusername" target="_blank">GitHub</a>
+      <a href="https://youtube.com/@codewithkush10" target="_blank">YouTube</a>
+      <a href="https://github.com/CodewithGamerz" target="_blank">GitHub</a>
     </div>
   </footer>
 

@@ -150,7 +150,7 @@
     /* Style only the subscribe button in navbar */
 .subscribe-btn {
   position: fixed;
-  top: 32px; /* adjust for desired gap from top */
+  top: 40px; /* adjust for desired gap from top */
   right: 40px; /* match header padding */
   background: red;
   color: white;
@@ -309,6 +309,16 @@
 
     /* Responsive Design */
     @media (max-width: 768px) {
+        .subscribe-btn {
+    position: static; /* Cancel fixed position */
+    margin-left: auto; /* Align to right inside flex nav */
+    margin-top: 10px;
+    padding: 8px 14px;
+    font-size: 0.9rem;
+    display: block;
+    align-self: flex-end;
+  }
+
       header {
         flex-direction: column;
         align-items: flex-start;

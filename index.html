@@ -96,7 +96,8 @@
     }
 
     .btn {
-      padding: 12px 30px;
+
+      padding: 10px 20px;
       background: linear-gradient(90deg, #0ff, #f0f);
       color: #000;
       border: none;
@@ -105,15 +106,75 @@
       font-size: 1rem;
       cursor: pointer;
       text-decoration: none;
-      box-shadow: 0 0 10px #0ff;
-      transition: 0.4s;
+      box-shadow:0 0 10px #00ffff;
+      transition: transform 0.2s ease-in-out;
+      display: inline-block;
+      animation : rgb-glow 6s linear infinite
+     
+
+    }
+
+    
+    .btn:hover {
+      transform : scale(1.05);
+    }
+
+    @keyframes rgb-glow {
+      0%{
+        box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff;
+      }
+      5%{
+        box-shadow: 0 0 10px #0033ff, 0 0 20px #0033ff, 0 0 30px #0033ff;
+      }
+      10%{
+        box-shadow: 0 0 10px #ae00ff, 0 0 20px #ae00ff, 0 0 30px #ae00ff;
+      }
+      5%{
+        box-shadow: 0 0 10px #ff0048, 0 0 20px #ff0048, 0 0 30px #ff0048;
+      }
+      25%{
+        box-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff;
+      }
+      50%{
+        box-shadow: 0 0 10px #ffff00, 0 0 20px #ffff00, 0 0 30px #ffff00;
+      }
+      75%{
+        box-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00;
+      }
+      100%{
+        box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff;
+      }
+      
+    }
+    /* Style only the subscribe button in navbar */
+.subscribe-btn {
+  position: absolute;
+  top: 40px;
+  right: 20px;
+  background: red;
+  color: white;
+  box-shadow: 0 0 10px red;
+  animation: none;
+  z-index: 1000;
+  padding: 8px 15px;
+  font-size: 0.9rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.subscribe-btn:hover {
+  transform: scale(1.05);
+  color: white;
+}
+
+
+    .project-btn {
+      margin-top: 15px;
+      margin-bottom: 20px;
       display: inline-block;
     }
-
-    .btn:hover {
-      box-shadow: 0 0 20px #f0f;
-    }
-
+    
     .content-section {
       padding: 80px 40px;
       max-width: 1200px;
@@ -284,6 +345,9 @@
 </head>
 <body>
   <header>
+  <a href="https://www.youtube.com/@codewithkush10?sub_confirmation=1" target="_blank" class="btn subscribe-btn">
+    Subscribe
+  </a>
     <nav>
       <h1>Code With Gamerz</h1>
       <ul>
@@ -330,7 +394,7 @@
    <img src="https://codewithgamerz.github.io/calculator-preview.png" alt="Calculator Preview" style="width: 100%; max-width: 400px; border-radius: 10px; margin: 20px 0;">
 
     <p>This app supports basic operations like addition, subtraction, multiplication, and division. It is designed for beginners to understand GUI programming using Python. You can copy the source code by clicking the button given below</p>
-    <a href="calculator-code.html" class="btn">View Source Code</a>
+    <a href="calculator-code.html" class="btn project-btn">View Source Code</a>
   </div>
 
   <div style="margin-bottom: 60px;">
@@ -361,7 +425,7 @@ Demonstrating event-driven programming in Python</p>
     <p>It is for understanding the concept of gui only and for learning how a gui works. It is not an original python installer.
       You can copy the source code by clicking the button under this.
     </p>
-    <a href="python_installer.html" class="btn">View Source Code</a>
+    <a href="python_installer.html" class="btn project-btn">View Source Code</a>
   </div>
   
   <div style="margin-bottom: 60px;">
@@ -380,10 +444,10 @@ Demonstrating event-driven programming in Python</p>
 🧠 Perfect for beginners who are learning Python and want to understand input handling, conditionals, and how the file is saved or opened.
 
 </p>
-   <img src="https://codewithgamerz.github.io/notepad.png"  alt="Calculator Preview" style="width: 100%; max-width: 400px; border-radius: 10px; margin: 20px 0;">
+   <img src="notepad.png" alt="Calculator Preview" style="width: 100%; max-width: 400px; border-radius: 10px; margin: 20px 0;">
 
     <p>This project is a great example of how Python can be used to create real desktop applications with graphical user interfaces. It’s perfect for beginners looking to understand event-driven programming and GUI design in Python. You can copy the source code by clicking the button given below</p>
-    <a href="note.html" class="btn">View Source Code</a>
+    <a href="note.html" class="btn project-btn">View Source Code</a>
   </div>
 </section>
 

@@ -387,6 +387,23 @@
   }
 }
 
+/* Default: show desktop, hide mobile */
+.desktop-type {
+  display: block;
+}
+.mobile-type {
+  display: none;
+}
+
+/* On screens smaller than 768px (phones), switch */
+@media (max-width: 768px) {
+  .desktop-type {
+    display: none;
+  }
+  .mobile-type {
+    display: block;
+  }
+}
  .typewriter {
   overflow: hidden;
   border-right: 3px solid #0ff;
@@ -394,8 +411,9 @@
   margin: 0 auto;
   letter-spacing: 2px;
   width: 0;
-  animation: typing 8s steps(30, end) infinite, blink 1s step-end infinite;
+  animation: typing 8s steps(40, end) infinite, blink 1s step-end infinite;
 }
+
 
 @keyframes typing {
   0% {
@@ -506,7 +524,8 @@
 </div>
 
 
-    <h1 class="typewriter">Welcome to <br><span>Code With Gamerz</span></h1>
+    <h1 class="typewriter desktop-type">Welcome to <span>Code With Gamerz</span></h1>
+    <h1 class="typewriter mobile-type">Welcome to <span>Code With Gamerz</span></h1>
 
     <p>Learn Python | Download Projects | Level Up</p>
     <a href="#projects" class="btn" onclick="showSection('projects')">Explore Projects</a>

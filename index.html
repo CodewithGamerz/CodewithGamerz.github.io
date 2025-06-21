@@ -400,10 +400,13 @@
   letter-spacing: 2px;
   width: 0;
   max-width: 100%;
-  animation: typing 8s steps(26, end) infinite, blink 1s step-end infinite;
-  font-size: 6vw; /* Responsive font size */
-  text-align: center;
+  animation: typing 6s steps(30, end) infinite, blink 1s step-end infinite;
+  font-size: clamp(1.2rem, 5vw, 3rem); /* 👈 Responsive font size */
+  display: inline-block;
+  overflow-x: auto;
+  text-overflow: ellipsis;
 }
+
 
 
 @keyframes typing {
@@ -462,7 +465,10 @@
 </div>
 
 
-    <h1 class="typewriter">Welcome to <span>Code With Gamerz</span></h1>
+    <div style="width: 100%; overflow-x: auto;">
+  <h1 class="typewriter">Welcome to <span>Code With Gamerz</span></h1>
+</div>
+
 
     <p>Learn Python | Download Projects | Level Up</p>
     <a href="#projects" class="btn" onclick="showSection('projects')">Explore Projects</a>

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,9 +7,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Code With Gamerz</title>
   <link rel="icon" href="youtube-logo.png" type="image/png" />
-  <meta name="description" content="All the latest course for free with all the notes and source code available.">
   <link rel="shortcut icon" href="youtube logo.png" type="image/png">
+  <meta name="description" content="All the latest course for free with all the notes and source code available.">
   <style>
+    /* Your existing CSS here (unchanged) */ 
     @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap');
 
     * {
@@ -109,7 +111,7 @@
       box-shadow:0 0 10px #00ffff;
       transition: transform 0.2s ease-in-out;
       display: inline-block;
-      animation : rgb-glow 6s linear infinite
+      animation : rgb-glow 6s linear infinite;
      
 
     }
@@ -329,41 +331,62 @@
 
 
     /* Responsive Design */
-    @media (max-width: 768px) {
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 20px;
-      }
+   @media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+  }
 
-      nav ul {
-        flex-direction: column;
-        gap: 15px;
-        margin-top: 15px;
-      }
+  nav {
+    width: 100%;
+  }
 
-      .hero h1 {
-        font-size: 2.5rem;
-      }
+  nav ul {
+    display: none;
+    flex-direction: column;
+    gap: 15px;
+    background: #111;
+    width: 100%;
+    padding: 20px;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    z-index: 999;
+    margin-top: 15px;
+  }
 
-      .hero p {
-        font-size: 1rem;
-      }
+  nav ul.active {
+    display: flex;
+  }
 
-      .btn {
-        padding: 10px 20px;
-        font-size: 0.9rem;
-      }
+  .navbar-toggle {
+    display: flex;
+  }
 
-      .cards {
-        flex-direction: column;
-        align-items: center;
-      }
+  .hero h1 {
+    font-size: 2.5rem;
+  }
 
-      .card {
-        width: 90%;
-      }
-    }
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .btn {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+
+  .cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    width: 90%;
+  }
+}
+
  .typewriter {
   overflow: hidden;
   border-right: 3px solid #0ff;
@@ -399,28 +422,81 @@
 }
 
 
+
+    /* New styles for responsive navbar */
+    .navbar-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .navbar-toggle span {
+      background: #0ff;
+      height: 3px;
+      width: 25px;
+      margin: 4px;
+    }
+
+    @media (max-width: 768px) {
+      nav ul {
+        display: none;
+        flex-direction: column;
+        gap: 15px;
+        background: #111;
+        width: 100%;
+        padding: 20px;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        z-index: 999;
+      }
+
+      nav ul.active {
+        display: flex;
+      }
+
+      .navbar-toggle {
+        display: flex;
+      }
+
+      nav {
+        width: 100%;
+      }
+
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px;
+      }
+    }
   </style>
 </head>
+
 <body>
   <header>
+    <div class="navbar-toggle" onclick="toggleNavbar()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
     <nav>
       <h1>Code With Gamerz</h1>
-      <ul>
+      <ul id="navbar">
         <li><a href="#home" onclick="showSection('home')">Home</a></li>
         <li><a href="#projects" onclick="showSection('projects')">Projects</a></li>
         <li><a href="#notes" onclick="showSection('notes')">Notes</a></li>
         <li><a href="#about" onclick="showSection('about')">About</a></li>
         <li><a href="contact.html">Contact</a></li>
-       <li class="subscribe-btn-wrapper">
-  <a href="https://www.youtube.com/@codewithkush10?sub_confirmation=1" target="_blank" class="btn subscribe-btn">
-    Subscribe
-  </a>
-</li>
-
-
+        <li class="subscribe-btn-wrapper">
+          <a href="https://www.youtube.com/@codewithkush10?sub_confirmation=1" target="_blank" class="btn subscribe-btn">
+            Subscribe
+          </a>
+        </li>
       </ul>
     </nav>
   </header>
+
+  <!-- Your existing body content remains unchanged -->
 
   <section id="home" class="hero section">
     <div class="logo-container">
@@ -555,5 +631,11 @@ Demonstrating event-driven programming in Python</p>
       document.getElementById(id).style.display = 'block';
       window.scrollTo(0, 0);
     }
+
+    function toggleNavbar() {
+      document.getElementById('navbar').classList.toggle('active');
+    }
   </script>
 </body>
+
+</html>

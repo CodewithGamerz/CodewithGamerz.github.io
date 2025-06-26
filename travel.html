@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Calculator Source Code</title>
+  <style>
+    body {
+      background: #0a0a0a;
+      color: #0ff;
+      font-family: monospace;
+      padding: 30px;
+    }
+    h1 {
+      text-align: center;
+      color: #f0f;
+      margin-bottom: 30px;
+    }
+    pre {
+      background: #111;
+      padding: 20px;
+      border: 1px solid #0ff;
+      border-radius: 10px;
+      overflow-x: auto;
+      white-space: pre-wrap;
+    }
+    button {
+      display: block;
+      margin: 20px auto;
+      padding: 12px 25px;
+      background: #0ff;
+      color: #000;
+      font-weight: bold;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Good To Go - Travel Booking Form Source Code</h1>
+
+  <pre id="code">
+from tkinter import *
+
+root  = Tk()
+root.geometry("400x350")
+root.maxsize(400,350)
+root.configure(bg="coral")
+root.title("Good To Go")
+
+
+def getvals():
+    print("Submitting form...")
+
+    username.get()
+    phone.get()
+    gender.get()
+    emergency.get()
+    paymethod.get()
+    foodvalue.get()
+    with open("record.txt","a") as f:
+        f.write(f"Username:{username.get()}\nPhone number: {phone.get()}\nGender: {gender.get()}\nEmergency number:{emergency.get()}\nPaymethod: {paymethod.get()}\nFood Pre-booking: {foodvalue.get()}\n\n")
+    
+# heading 
+heading = Label(root, text="Good To Go 🪽",font="Times 20 bold",pady=20,relief=SUNKEN,bd=3)
+heading.grid(row=0 , column=1)
+
+# making labels
+username= Label(root, text="Username",pady=2,relief=SUNKEN,font="elephant 12 italic")
+phone= Label(root, text="Phone number",pady=2,relief=SUNKEN,font="elephant 12 italic")
+gender= Label(root, text="Gender",pady=2,relief=SUNKEN,font="elephant 12 italic")
+emergency= Label(root, text="Emergency",pady=2,relief=SUNKEN,font="elephant 12 italic")
+paymethod= Label(root, text="Paymethod",pady=2,relief=SUNKEN,font="elephant 12 italic")
+
+# packing labels
+username.grid(row=1)
+phone.grid(row=2)
+gender.grid(row=3)
+emergency.grid(row=4)
+paymethod.grid(row=5)
+
+# Variable classes
+username=StringVar()
+phone=StringVar()
+gender=StringVar()
+emergency=StringVar()
+paymethod=StringVar()
+foodvalue = IntVar()
+
+# making entry widgets
+usernamevalue = Entry(root, textvariable=username)
+phonevalue = Entry(root, textvariable=phone)
+gendervalue = Entry(root, textvariable=gender)
+emergencyvalue = Entry(root, textvariable=emergency)
+paymethodvalue = Entry(root, textvariable=paymethod)
+
+# packing entry widgets
+usernamevalue.grid(row=1 , column=1)
+phonevalue.grid(row=2, column=1)
+gendervalue.grid(row=3 , column=1)
+emergencyvalue.grid(row=4 , column=1)
+paymethodvalue.grid(row=5 , column=1)
+
+# checkbutton making and packing
+food=Checkbutton(root,text="Pre-book Meals", font="Algerian 15 italic",relief=GROOVE, variable=foodvalue)
+food.grid(row=6,column=1,pady=2)
+
+# Submit button
+Button(root,text="Submit to Good To Go🪽",font="Times 10 bold italic",relief=SUNKEN,bg="aqua",command=getvals).grid(row=7,column=1)
+
+root.mainloop()
+  </pre>
+
+  <button onclick="copyCode()">Copy Code</button>
+
+  <script>
+    function copyCode() {
+      const text = document.getElementById("code").innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        alert("Code copied to clipboard!");
+      });
+    }
+  </script>
+</body>
+</html>

@@ -512,6 +512,55 @@
     margin: 15px 0;
   }
 }
+.search-form {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.search-form input {
+  padding: 6px 10px;
+  border: 1px solid #0ff;
+  border-radius: 4px;
+  background-color: #111;
+  color: #0ff;
+  outline: none;
+}
+
+.search-form button {
+  padding: 6px 12px;
+  background-color: #0ff;
+  color: #000;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .search-form {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .search-form input, .search-form button {
+    width: 100%;
+  }
+}
+.error-message {
+  color: #ff4d4d;
+  font-size: 0.85rem;
+  margin-top: 4px;
+  display: none;
+  font-weight: bold;
+}
+
+.search-form input.error {
+  border: 1px solid #ff4d4d;
+  background-color: #1a0000;
+  box-shadow: 0 0 5px #ff4d4d;
+}
+
 
   </style>
 </head>
@@ -530,12 +579,19 @@
         <li><a href="#projects" onclick="showSection('projects')">Projects</a></li>
         <li><a href="#notes" onclick="showSection('notes')">Notes</a></li>
         <li><a href="#about" onclick="showSection('about')">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="#contact" onclick="showSection('contact')">Contact</a></li>
         <li class="subscribe-btn-wrapper">
           <a href="https://www.youtube.com/@codewithkush10?sub_confirmation=1" target="_blank" class="btn subscribe-btn">
             Subscribe
           </a>
         </li>
+        <form onsubmit="handleSearch(event)" class="search-form">
+          <input type="text" id="searchInput" placeholder="Search..." />
+          <p id="searchError" class="error-message"></p>
+        </form>
+        <li>
+</li>
+
       </ul>
     </nav>
   </header>
@@ -710,6 +766,35 @@ Join the community, explore new tech, and level up your skills — one project a
 
 </p>
   </section>
+<section id="contact" class="content-section section" style="display: none;">
+  <h2>Contact</h2>
+<div class="logo-container">
+  <div class="glow-ring">
+    <img src="youtube logo.png" alt="Channel Logo" class="channel-logo">
+  </div>
+</div>
+  <div style="display: flex; justify-content: center; gap: 50px; flex-wrap: wrap; align-items: center; margin-top: 20px;">
+
+    <!-- About -->
+    <div style="text-align: center;">
+      
+      <div><h1>Code With Gamerz</h1><br>
+  <p>
+    Welcome to Code With Gamerz! I'm a young Python enthusiast.  
+  I share Python projects, tutorials, and helpful notes for beginners.  
+  My goal is to help others learn coding in a fun and easy way.<br><br>
+  💬 If you have any questions or feedback, feel free to drop a comment on any of my YouTube videos.<br>
+  📺 Don't forget to subscribe to stay updated with the latest content!
+  </p></div>
+      <div style="margin-top: 10px;">
+        <a href="https://www.youtube.com/@codewithkush10" class="btn">
+          Visit Channel
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
 
   <footer>
     <p>&copy; 2025 Code With Gamerz. All rights reserved.</p>
@@ -731,6 +816,79 @@ Join the community, explore new tech, and level up your skills — one project a
       document.getElementById('navbar').classList.toggle('active');
     }
   </script>
+  <script>
+  function handleSearch(event) {
+    event.preventDefault();
+    const query = document.getElementById("searchInput").value.toLowerCase().trim();
+
+    // Show the projects section first if a project is searched
+    if (
+      query.includes("calculator") ||
+      query.includes("basic calculator")
+    ) {
+      showSection("projects");
+      setTimeout(() => {
+        const target = document.querySelector(".card:nth-child(1)");
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 100);
+    } else if (
+      query.includes("installer") ||
+      query.includes("python installer")||
+      query.includes("python gui")
+    ) {
+      showSection("projects");
+      setTimeout(() => {
+        const target = document.querySelector(".card:nth-child(2)");
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 100);
+    } else if (
+      query.includes("notepad")
+    ) {
+      showSection("projects");
+      setTimeout(() => {
+        const target = document.querySelector(".card:nth-child(3)");
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 100);
+    } else if (
+      query.includes("travel")||
+      query.includes("good to go")||
+      query.includes("travel form")
+    ) {
+      showSection("projects");
+      setTimeout(() => {
+        const target = document.querySelectorAll(".card")[3];
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 100);
+    } else if (query.includes("notes") || query.includes("cmd")) {
+      showSection("notes");
+    } else if (query.includes("about")) {
+      showSection("about");
+    } else if (query.includes("home") || query.includes("welcome")) {
+      showSection("home");
+    } else if (query.includes("contact") || query.includes("info")|| query.includes("code with gamerz")) {
+      showSection("contact");
+    } else if (query.includes("projects") || query.includes("course")|| query.includes("source code")) {
+      showSection("projects");
+    } else {
+  const errorMsg = document.getElementById("searchError");
+  errorMsg.textContent = "🚫 No matching content found. Try ‘calculator’, ‘installer’, ‘notepad’, ‘notes’, etc.";
+  errorMsg.style.display = "block";
+
+  // Also mark input as error visually
+  const input = document.getElementById("searchInput");
+  input.classList.add("error");
+
+  // Auto-clear error after 5 seconds
+  setTimeout(() => {
+    errorMsg.style.display = "none";
+    input.classList.remove("error");
+  }, 5000);
+}
+
+  }
+</script>
+
+
 </body>
 
 </html>

@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+ <!-- Prism.js CSS for syntax highlighting -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+
   <meta charset="UTF-8" />
   <title>Calculator Source Code</title>
   <style>
@@ -16,13 +19,11 @@
       margin-bottom: 30px;
     }
     pre {
-      background: #111;
-      padding: 20px;
-      border: 1px solid #0ff;
-      border-radius: 10px;
-      overflow-x: auto;
-      white-space: pre-wrap;
-    }
+  font-size: 16px;
+  border-radius: 10px;
+  overflow-x: auto;
+}
+
     button {
       display: block;
       margin: 20px auto;
@@ -35,11 +36,46 @@
       cursor: pointer;
     }
   </style>
+   <style>
+    .code-container {
+  position: relative;
+}
+
+.copy-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  font-size: 14px;
+  color: #6c757d;
+  background: #fcfcfc;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 10;
+  transition: background 0.2s ease;
+}
+
+.copy-btn:hover {
+  background: #e2e6ea;
+}
+</style>
 </head>
 <body>
   <h1>Good To Go - Travel Booking Form Source Code</h1>
 
-  <pre id="code">
+  <div class="code-container">
+  <button class="copy-btn" onclick="copyToClipboard(this)">
+    <svg xmlns="http://www.w3.org/2000/svg" height="16" viewBox="0 0 24 24" width="16" fill="#6c757d">
+      <path d="M0 0h24v24H0z" fill="none"/>
+      <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
+    </svg>
+    <span>Copy</span>
+  </button>
+  <pre class="line-numbers"><code class="language-python" >
 from tkinter import *
 
 root  = Tk()
@@ -109,17 +145,25 @@ food.grid(row=6,column=1,pady=2)
 Button(root,text="Submit to Good To Go🪽",font="Times 10 bold italic",relief=SUNKEN,bg="aqua",command=getvals).grid(row=7,column=1)
 
 root.mainloop()
-  </pre>
+ </code></pre>
+ <script>
+function copyToClipboard(button) {
+  const codeBlock = button.nextElementSibling.querySelector("code");
+  const text = codeBlock.innerText;
 
-  <button onclick="copyCode()">Copy Code</button>
+  navigator.clipboard.writeText(text).then(() => {
+    const originalText = button.querySelector("span").textContent;
+    button.querySelector("span").textContent = "Copied!";
+    setTimeout(() => {
+      button.querySelector("span").textContent = originalText;
+    }, 2000);
+  });
+}
+</script>
 
-  <script>
-    function copyCode() {
-      const text = document.getElementById("code").innerText;
-      navigator.clipboard.writeText(text).then(() => {
-        alert("Code copied to clipboard!");
-      });
-    }
-  </script>
+
+   <!-- Prism.js Script -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
 </body>
 </html>
